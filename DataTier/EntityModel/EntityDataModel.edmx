@@ -1,0 +1,1507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="siseobModel.Store" 
+            Provider="MySql.Data.MySqlClient" 
+            ProviderManifestToken="6.0" 
+            Alias="Self" 
+            xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" 
+            xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" 
+            xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="articleprices">
+          <Key>
+            <PropertyRef Name="IdArticlePrices" />
+          </Key>
+          <Property Name="IdArticlePrices" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitCost" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="IdCertificateArticles" Type="int" Nullable="false" />
+          <Property Name="IdPriceList" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="assignedemployee">
+          <Key>
+            <PropertyRef Name="IdAssignedEmployee" />
+          </Key>
+          <Property Name="IdAssignedEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfAssignment" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="DateOfDeallocate" Type="datetime" Precision="0" />
+          <Property Name="Assigned" Type="bit" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="assignedtool">
+          <Key>
+            <PropertyRef Name="IdAssignedTool" />
+          </Key>
+          <Property Name="IdAssignedTool" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfAssignment" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="DateOfDeallocate" Type="datetime" Precision="0" />
+          <Property Name="Assigned" Type="bit" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="IdTool" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="certificate">
+          <Key>
+            <PropertyRef Name="IdCertificate" />
+          </Key>
+          <Property Name="IdCertificate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="IdCertificateType" Type="int" Nullable="false" />
+          <Property Name="CertificateNumber" Type="varchar" MaxLength="45" />
+          <Property Name="CreationDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="TotalAmount" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="WorkProgress" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="certificatearticleitem">
+          <Key>
+            <PropertyRef Name="IdCertificateArticleItem" />
+          </Key>
+          <Property Name="IdCertificateArticleItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="certificatearticles">
+          <Key>
+            <PropertyRef Name="IdCertificateArticles" />
+          </Key>
+          <Property Name="IdCertificateArticles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="IdMeasurementUnit" Type="int" Nullable="false" />
+          <Property Name="IdCertificateArticleItem" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="certificatedetail">
+          <Key>
+            <PropertyRef Name="IdCertificateDetail" />
+          </Key>
+          <Property Name="IdCertificateDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCertificate" Type="int" Nullable="false" />
+          <Property Name="IdCertificateArticles" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="TotalCost" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="UnitCost" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="certificatetype">
+          <Key>
+            <PropertyRef Name="IdCertificateType" />
+          </Key>
+          <Property Name="IdCertificateType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CuitCuil" Type="varchar" MaxLength="45" />
+          <Property Name="Address" Type="varchar" MaxLength="45" />
+          <Property Name="PhoneNumber1" Type="varchar" MaxLength="45" />
+          <Property Name="PhoneNumber2" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmployeeType" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="150" />
+          <Property Name="Birthdate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="PhoneNumber1" Type="varchar" MaxLength="45" />
+          <Property Name="PhoneNumber2" Type="varchar" MaxLength="45" />
+          <Property Name="DNI" Type="varchar" MaxLength="45" />
+          <Property Name="Cuil" Type="varchar" MaxLength="45" />
+          <Property Name="AdmissionDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="AgreedSalary" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employeetype">
+          <Key>
+            <PropertyRef Name="IdEmployeeType" />
+          </Key>
+          <Property Name="IdEmployeeType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="IdLocation" />
+          </Key>
+          <Property Name="IdLocation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="measurementunit">
+          <Key>
+            <PropertyRef Name="IdMeasurementUnit" />
+          </Key>
+          <Property Name="IdMeasurementUnit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="Simbol" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="moneymovement">
+          <Key>
+            <PropertyRef Name="IdMoneyMovement" />
+          </Key>
+          <Property Name="IdMoneyMovement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+          <Property Name="IdMoneyMovementType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="moneymovementtype">
+          <Key>
+            <PropertyRef Name="IdMoneyMovementType" />
+          </Key>
+          <Property Name="IdMoneyMovementType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="Sign" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pricelist">
+          <Key>
+            <PropertyRef Name="IdPriceList" />
+          </Key>
+          <Property Name="IdPriceList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="IdReceipt" />
+          </Key>
+          <Property Name="IdReceipt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalCost" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+          <Property Name="ReceiptNumber" Type="varchar" MaxLength="150" />
+          <Property Name="IdWork" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="receiptdetail">
+          <Key>
+            <PropertyRef Name="IdReceiptDetail" />
+          </Key>
+          <Property Name="IdReceiptDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+          <Property Name="UnitPrice" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="IdReceipt" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tool">
+          <Key>
+            <PropertyRef Name="IdTool" />
+          </Key>
+          <Property Name="IdTool" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+          <Property Name="Brand" Type="varchar" MaxLength="45" />
+          <Property Name="Model" Type="varchar" MaxLength="45" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="100" />
+          <Property Name="AdmissionDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="IdToolType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tooltype">
+          <Key>
+            <PropertyRef Name="IdToolType" />
+          </Key>
+          <Property Name="IdToolType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="work">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="FinishDate" Type="datetime" Precision="0" />
+          <Property Name="PossibleEndDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="IdLocation" Type="int" Nullable="false" />
+          <Property Name="IdWorkType" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="worktype">
+          <Key>
+            <PropertyRef Name="IdWorkType" />
+          </Key>
+          <Property Name="IdWorkType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="fk_articleprices_certificatearticles1">
+          <End Role="certificatearticles" Type="Self.certificatearticles" Multiplicity="1" />
+          <End Role="articleprices" Type="Self.articleprices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatearticles">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Principal>
+            <Dependent Role="articleprices">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_articleprices_pricelist1">
+          <End Role="pricelist" Type="Self.pricelist" Multiplicity="1" />
+          <End Role="articleprices" Type="Self.articleprices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pricelist">
+              <PropertyRef Name="IdPriceList" />
+            </Principal>
+            <Dependent Role="articleprices">
+              <PropertyRef Name="IdPriceList" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedEmployee_Employee1">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="assignedemployee" Type="Self.assignedemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="assignedemployee">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedEmployee_Work1">
+          <End Role="work" Type="Self.work" Multiplicity="1" />
+          <End Role="assignedemployee" Type="Self.assignedemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="assignedemployee">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedTool_Tool1">
+          <End Role="tool" Type="Self.tool" Multiplicity="1" />
+          <End Role="assignedtool" Type="Self.assignedtool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tool">
+              <PropertyRef Name="IdTool" />
+            </Principal>
+            <Dependent Role="assignedtool">
+              <PropertyRef Name="IdTool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedTool_Work1">
+          <End Role="work" Type="Self.work" Multiplicity="1" />
+          <End Role="assignedtool" Type="Self.assignedtool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="assignedtool">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Certificate_CertificateType1">
+          <End Role="certificatetype" Type="Self.certificatetype" Multiplicity="1" />
+          <End Role="certificate" Type="Self.certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatetype">
+              <PropertyRef Name="IdCertificateType" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="IdCertificateType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Certificate_Work1">
+          <End Role="work" Type="Self.work" Multiplicity="1" />
+          <End Role="certificate" Type="Self.certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateArticles_CertificateArticleItem1">
+          <End Role="certificatearticleitem" Type="Self.certificatearticleitem" Multiplicity="1" />
+          <End Role="certificatearticles" Type="Self.certificatearticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatearticleitem">
+              <PropertyRef Name="IdCertificateArticleItem" />
+            </Principal>
+            <Dependent Role="certificatearticles">
+              <PropertyRef Name="IdCertificateArticleItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateArticles_MeasurementUnit1">
+          <End Role="measurementunit" Type="Self.measurementunit" Multiplicity="1" />
+          <End Role="certificatearticles" Type="Self.certificatearticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measurementunit">
+              <PropertyRef Name="IdMeasurementUnit" />
+            </Principal>
+            <Dependent Role="certificatearticles">
+              <PropertyRef Name="IdMeasurementUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateDetail_Certificate1">
+          <End Role="certificate" Type="Self.certificate" Multiplicity="1" />
+          <End Role="certificatedetail" Type="Self.certificatedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificate">
+              <PropertyRef Name="IdCertificate" />
+            </Principal>
+            <Dependent Role="certificatedetail">
+              <PropertyRef Name="IdCertificate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateDetail_CertificateArticles1">
+          <End Role="certificatearticles" Type="Self.certificatearticles" Multiplicity="1" />
+          <End Role="certificatedetail" Type="Self.certificatedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatearticles">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Principal>
+            <Dependent Role="certificatedetail">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_EmployeeType1">
+          <End Role="employeetype" Type="Self.employeetype" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employeetype">
+              <PropertyRef Name="IdEmployeeType" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="IdEmployeeType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MoneyMovements_MovementType1">
+          <End Role="moneymovementtype" Type="Self.moneymovementtype" Multiplicity="1" />
+          <End Role="moneymovement" Type="Self.moneymovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="moneymovementtype">
+              <PropertyRef Name="IdMoneyMovementType" />
+            </Principal>
+            <Dependent Role="moneymovement">
+              <PropertyRef Name="IdMoneyMovementType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MoneyMovements_Work1">
+          <End Role="work" Type="Self.work" Multiplicity="1" />
+          <End Role="moneymovement" Type="Self.moneymovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="moneymovement">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Receipt_Work1">
+          <End Role="work" Type="Self.work" Multiplicity="1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ReceiptDetail_Receipt1">
+          <End Role="receipt" Type="Self.receipt" Multiplicity="1" />
+          <End Role="receiptdetail" Type="Self.receiptdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="receipt">
+              <PropertyRef Name="IdReceipt" />
+            </Principal>
+            <Dependent Role="receiptdetail">
+              <PropertyRef Name="IdReceipt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tool_ToolType1">
+          <End Role="tooltype" Type="Self.tooltype" Multiplicity="1" />
+          <End Role="tool" Type="Self.tool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tooltype">
+              <PropertyRef Name="IdToolType" />
+            </Principal>
+            <Dependent Role="tool">
+              <PropertyRef Name="IdToolType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Work_Client1">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="work" Type="Self.work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="work">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Work_Location1">
+          <End Role="location" Type="Self.location" Multiplicity="1" />
+          <End Role="work" Type="Self.work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="IdLocation" />
+            </Principal>
+            <Dependent Role="work">
+              <PropertyRef Name="IdLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Work_WorkType">
+          <End Role="worktype" Type="Self.worktype" Multiplicity="1" />
+          <End Role="work" Type="Self.work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="worktype">
+              <PropertyRef Name="IdWorkType" />
+            </Principal>
+            <Dependent Role="work">
+              <PropertyRef Name="IdWorkType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="siseobModelStoreContainer">
+          <EntitySet Name="articleprices" EntityType="Self.articleprices" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="assignedemployee" EntityType="Self.assignedemployee" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="assignedtool" EntityType="Self.assignedtool" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="certificate" EntityType="Self.certificate" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="certificatearticleitem" EntityType="Self.certificatearticleitem" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="certificatearticles" EntityType="Self.certificatearticles" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="certificatedetail" EntityType="Self.certificatedetail" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="certificatetype" EntityType="Self.certificatetype" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="employeetype" EntityType="Self.employeetype" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="measurementunit" EntityType="Self.measurementunit" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="moneymovement" EntityType="Self.moneymovement" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="moneymovementtype" EntityType="Self.moneymovementtype" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="pricelist" EntityType="Self.pricelist" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="receipt" EntityType="Self.receipt" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="receiptdetail" EntityType="Self.receiptdetail" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="tool" EntityType="Self.tool" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="tooltype" EntityType="Self.tooltype" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="work" EntityType="Self.work" Schema="siseob" store:Type="Tables" />
+          <EntitySet Name="worktype" EntityType="Self.worktype" Schema="siseob" store:Type="Tables" />
+          <AssociationSet Name="fk_articleprices_certificatearticles1" Association="Self.fk_articleprices_certificatearticles1">
+            <End Role="certificatearticles" EntitySet="certificatearticles" />
+            <End Role="articleprices" EntitySet="articleprices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_articleprices_pricelist1" Association="Self.fk_articleprices_pricelist1">
+            <End Role="pricelist" EntitySet="pricelist" />
+            <End Role="articleprices" EntitySet="articleprices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedEmployee_Employee1" Association="Self.fk_AssignedEmployee_Employee1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="assignedemployee" EntitySet="assignedemployee" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedEmployee_Work1" Association="Self.fk_AssignedEmployee_Work1">
+            <End Role="work" EntitySet="work" />
+            <End Role="assignedemployee" EntitySet="assignedemployee" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedTool_Tool1" Association="Self.fk_AssignedTool_Tool1">
+            <End Role="tool" EntitySet="tool" />
+            <End Role="assignedtool" EntitySet="assignedtool" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedTool_Work1" Association="Self.fk_AssignedTool_Work1">
+            <End Role="work" EntitySet="work" />
+            <End Role="assignedtool" EntitySet="assignedtool" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Certificate_CertificateType1" Association="Self.fk_Certificate_CertificateType1">
+            <End Role="certificatetype" EntitySet="certificatetype" />
+            <End Role="certificate" EntitySet="certificate" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Certificate_Work1" Association="Self.fk_Certificate_Work1">
+            <End Role="work" EntitySet="work" />
+            <End Role="certificate" EntitySet="certificate" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateArticles_CertificateArticleItem1" Association="Self.fk_CertificateArticles_CertificateArticleItem1">
+            <End Role="certificatearticleitem" EntitySet="certificatearticleitem" />
+            <End Role="certificatearticles" EntitySet="certificatearticles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateArticles_MeasurementUnit1" Association="Self.fk_CertificateArticles_MeasurementUnit1">
+            <End Role="measurementunit" EntitySet="measurementunit" />
+            <End Role="certificatearticles" EntitySet="certificatearticles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateDetail_Certificate1" Association="Self.fk_CertificateDetail_Certificate1">
+            <End Role="certificate" EntitySet="certificate" />
+            <End Role="certificatedetail" EntitySet="certificatedetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateDetail_CertificateArticles1" Association="Self.fk_CertificateDetail_CertificateArticles1">
+            <End Role="certificatearticles" EntitySet="certificatearticles" />
+            <End Role="certificatedetail" EntitySet="certificatedetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_EmployeeType1" Association="Self.fk_Employee_EmployeeType1">
+            <End Role="employeetype" EntitySet="employeetype" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MoneyMovements_MovementType1" Association="Self.fk_MoneyMovements_MovementType1">
+            <End Role="moneymovementtype" EntitySet="moneymovementtype" />
+            <End Role="moneymovement" EntitySet="moneymovement" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MoneyMovements_Work1" Association="Self.fk_MoneyMovements_Work1">
+            <End Role="work" EntitySet="work" />
+            <End Role="moneymovement" EntitySet="moneymovement" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Receipt_Work1" Association="Self.fk_Receipt_Work1">
+            <End Role="work" EntitySet="work" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ReceiptDetail_Receipt1" Association="Self.fk_ReceiptDetail_Receipt1">
+            <End Role="receipt" EntitySet="receipt" />
+            <End Role="receiptdetail" EntitySet="receiptdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tool_ToolType1" Association="Self.fk_Tool_ToolType1">
+            <End Role="tooltype" EntitySet="tooltype" />
+            <End Role="tool" EntitySet="tool" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Work_Client1" Association="Self.fk_Work_Client1">
+            <End Role="client" EntitySet="client" />
+            <End Role="work" EntitySet="work" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Work_Location1" Association="Self.fk_Work_Location1">
+            <End Role="location" EntitySet="location" />
+            <End Role="work" EntitySet="work" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Work_WorkType" Association="Self.fk_Work_WorkType">
+            <End Role="worktype" EntitySet="worktype" />
+            <End Role="work" EntitySet="work" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="siseobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="siseobEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="assignedemployees" EntityType="siseobModel.assignedemployee" />
+          <EntitySet Name="assignedtools" EntityType="siseobModel.assignedtool" />
+          <EntitySet Name="certificates" EntityType="siseobModel.certificate" />
+          <EntitySet Name="certificatearticleitems" EntityType="siseobModel.certificatearticleitem" />
+          <EntitySet Name="certificatedetails" EntityType="siseobModel.certificatedetail" />
+          <EntitySet Name="certificatetypes" EntityType="siseobModel.certificatetype" />
+          <EntitySet Name="clients" EntityType="siseobModel.client" />
+          <EntitySet Name="employees" EntityType="siseobModel.employee" />
+          <EntitySet Name="employeetypes" EntityType="siseobModel.employeetype" />
+          <EntitySet Name="locations" EntityType="siseobModel.location" />
+          <EntitySet Name="measurementunits" EntityType="siseobModel.measurementunit" />
+          <EntitySet Name="moneymovements" EntityType="siseobModel.moneymovement" />
+          <EntitySet Name="moneymovementtypes" EntityType="siseobModel.moneymovementtype" />
+          <EntitySet Name="receipts" EntityType="siseobModel.receipt" />
+          <EntitySet Name="receiptdetails" EntityType="siseobModel.receiptdetail" />
+          <EntitySet Name="tools" EntityType="siseobModel.tool" />
+          <EntitySet Name="tooltypes" EntityType="siseobModel.tooltype" />
+          <EntitySet Name="works" EntityType="siseobModel.work" />
+          <EntitySet Name="worktypes" EntityType="siseobModel.worktype" />
+          <AssociationSet Name="fk_AssignedEmployee_Employee1" Association="siseobModel.fk_AssignedEmployee_Employee1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="assignedemployee" EntitySet="assignedemployees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedEmployee_Work1" Association="siseobModel.fk_AssignedEmployee_Work1">
+            <End Role="work" EntitySet="works" />
+            <End Role="assignedemployee" EntitySet="assignedemployees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedTool_Tool1" Association="siseobModel.fk_AssignedTool_Tool1">
+            <End Role="tool" EntitySet="tools" />
+            <End Role="assignedtool" EntitySet="assignedtools" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AssignedTool_Work1" Association="siseobModel.fk_AssignedTool_Work1">
+            <End Role="work" EntitySet="works" />
+            <End Role="assignedtool" EntitySet="assignedtools" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Certificate_CertificateType1" Association="siseobModel.fk_Certificate_CertificateType1">
+            <End Role="certificatetype" EntitySet="certificatetypes" />
+            <End Role="certificate" EntitySet="certificates" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Certificate_Work1" Association="siseobModel.fk_Certificate_Work1">
+            <End Role="work" EntitySet="works" />
+            <End Role="certificate" EntitySet="certificates" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateDetail_Certificate1" Association="siseobModel.fk_CertificateDetail_Certificate1">
+            <End Role="certificate" EntitySet="certificates" />
+            <End Role="certificatedetail" EntitySet="certificatedetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Work_Client1" Association="siseobModel.fk_Work_Client1">
+            <End Role="client" EntitySet="clients" />
+            <End Role="work" EntitySet="works" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_EmployeeType1" Association="siseobModel.fk_Employee_EmployeeType1">
+            <End Role="employeetype" EntitySet="employeetypes" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Work_Location1" Association="siseobModel.fk_Work_Location1">
+            <End Role="location" EntitySet="locations" />
+            <End Role="work" EntitySet="works" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MoneyMovements_MovementType1" Association="siseobModel.fk_MoneyMovements_MovementType1">
+            <End Role="moneymovementtype" EntitySet="moneymovementtypes" />
+            <End Role="moneymovement" EntitySet="moneymovements" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MoneyMovements_Work1" Association="siseobModel.fk_MoneyMovements_Work1">
+            <End Role="work" EntitySet="works" />
+            <End Role="moneymovement" EntitySet="moneymovements" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Receipt_Work1" Association="siseobModel.fk_Receipt_Work1">
+            <End Role="work" EntitySet="works" />
+            <End Role="receipt" EntitySet="receipts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ReceiptDetail_Receipt1" Association="siseobModel.fk_ReceiptDetail_Receipt1">
+            <End Role="receipt" EntitySet="receipts" />
+            <End Role="receiptdetail" EntitySet="receiptdetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tool_ToolType1" Association="siseobModel.fk_Tool_ToolType1">
+            <End Role="tooltype" EntitySet="tooltypes" />
+            <End Role="tool" EntitySet="tools" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Work_WorkType" Association="siseobModel.fk_Work_WorkType">
+            <End Role="worktype" EntitySet="worktypes" />
+            <End Role="work" EntitySet="works" />
+          </AssociationSet>
+          <EntitySet Name="articleprices" EntityType="siseobModel.articleprice" />
+          <EntitySet Name="pricelists" EntityType="siseobModel.pricelist" />
+          <AssociationSet Name="fk_articleprices_pricelist1" Association="siseobModel.fk_articleprices_pricelist1">
+            <End Role="pricelist" EntitySet="pricelists" />
+            <End Role="articleprice" EntitySet="articleprices" />
+          </AssociationSet>
+          <EntitySet Name="certificatearticles" EntityType="siseobModel.certificatearticle" />
+          <AssociationSet Name="fk_articleprices_certificatearticles1" Association="siseobModel.fk_articleprices_certificatearticles1">
+            <End Role="certificatearticle" EntitySet="certificatearticles" />
+            <End Role="articleprice" EntitySet="articleprices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateArticles_CertificateArticleItem1" Association="siseobModel.fk_CertificateArticles_CertificateArticleItem1">
+            <End Role="certificatearticleitem" EntitySet="certificatearticleitems" />
+            <End Role="certificatearticle" EntitySet="certificatearticles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateArticles_MeasurementUnit1" Association="siseobModel.fk_CertificateArticles_MeasurementUnit1">
+            <End Role="measurementunit" EntitySet="measurementunits" />
+            <End Role="certificatearticle" EntitySet="certificatearticles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CertificateDetail_CertificateArticles1" Association="siseobModel.fk_CertificateDetail_CertificateArticles1">
+            <End Role="certificatearticle" EntitySet="certificatearticles" />
+            <End Role="certificatedetail" EntitySet="certificatedetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="assignedemployee">
+          <Key>
+            <PropertyRef Name="IdAssignedEmployee" />
+          </Key>
+          <Property Name="IdAssignedEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfAssignment" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfDeallocate" Type="DateTime" />
+          <Property Name="Assigned" Type="Boolean" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="siseobModel.fk_AssignedEmployee_Employee1" FromRole="assignedemployee" ToRole="employee" />
+          <NavigationProperty Name="work" Relationship="siseobModel.fk_AssignedEmployee_Work1" FromRole="assignedemployee" ToRole="work" />
+        </EntityType>
+        <EntityType Name="assignedtool">
+          <Key>
+            <PropertyRef Name="IdAssignedTool" />
+          </Key>
+          <Property Name="IdAssignedTool" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfAssignment" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfDeallocate" Type="DateTime" />
+          <Property Name="Assigned" Type="Boolean" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="IdTool" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tool" Relationship="siseobModel.fk_AssignedTool_Tool1" FromRole="assignedtool" ToRole="tool" />
+          <NavigationProperty Name="work" Relationship="siseobModel.fk_AssignedTool_Work1" FromRole="assignedtool" ToRole="work" />
+        </EntityType>
+        <EntityType Name="certificate">
+          <Key>
+            <PropertyRef Name="IdCertificate" />
+          </Key>
+          <Property Name="IdCertificate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="IdCertificateType" Type="Int32" Nullable="false" />
+          <Property Name="CertificateNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="TotalAmount" Type="Decimal" Nullable="false" />
+          <Property Name="WorkProgress" Type="Decimal" Nullable="false" />
+          <Property Name="ModificationDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="certificatetype" Relationship="siseobModel.fk_Certificate_CertificateType1" FromRole="certificate" ToRole="certificatetype" />
+          <NavigationProperty Name="work" Relationship="siseobModel.fk_Certificate_Work1" FromRole="certificate" ToRole="work" />
+          <NavigationProperty Name="certificatedetails" Relationship="siseobModel.fk_CertificateDetail_Certificate1" FromRole="certificate" ToRole="certificatedetail" />
+        </EntityType>
+        <EntityType Name="certificatearticleitem">
+          <Key>
+            <PropertyRef Name="IdCertificateArticleItem" />
+          </Key>
+          <Property Name="IdCertificateArticleItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="certificatearticles" Relationship="siseobModel.fk_CertificateArticles_CertificateArticleItem1" FromRole="certificatearticleitem" ToRole="certificatearticle" />
+        </EntityType>
+        <EntityType Name="certificatedetail">
+          <Key>
+            <PropertyRef Name="IdCertificateDetail" />
+          </Key>
+          <Property Name="IdCertificateDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCertificate" Type="Int32" Nullable="false" />
+          <Property Name="IdCertificateArticles" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="certificate" Relationship="siseobModel.fk_CertificateDetail_Certificate1" FromRole="certificatedetail" ToRole="certificate" />
+          <Property Name="UnitCost" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="certificatearticle" Relationship="siseobModel.fk_CertificateDetail_CertificateArticles1" FromRole="certificatedetail" ToRole="certificatearticle" />
+        </EntityType>
+        <EntityType Name="certificatetype">
+          <Key>
+            <PropertyRef Name="IdCertificateType" />
+          </Key>
+          <Property Name="IdCertificateType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="certificates" Relationship="siseobModel.fk_Certificate_CertificateType1" FromRole="certificatetype" ToRole="certificate" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CuitCuil" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="works" Relationship="siseobModel.fk_Work_Client1" FromRole="client" ToRole="work" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmployeeType" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Birthdate" Type="DateTime" Nullable="false" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DNI" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Cuil" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="AdmissionDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="assignedemployees" Relationship="siseobModel.fk_AssignedEmployee_Employee1" FromRole="employee" ToRole="assignedemployee" />
+          <NavigationProperty Name="employeetype" Relationship="siseobModel.fk_Employee_EmployeeType1" FromRole="employee" ToRole="employeetype" />
+          <Property Name="AgreedSalary" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employeetype">
+          <Key>
+            <PropertyRef Name="IdEmployeeType" />
+          </Key>
+          <Property Name="IdEmployeeType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employees" Relationship="siseobModel.fk_Employee_EmployeeType1" FromRole="employeetype" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="IdLocation" />
+          </Key>
+          <Property Name="IdLocation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="works" Relationship="siseobModel.fk_Work_Location1" FromRole="location" ToRole="work" />
+        </EntityType>
+        <EntityType Name="measurementunit">
+          <Key>
+            <PropertyRef Name="IdMeasurementUnit" />
+          </Key>
+          <Property Name="IdMeasurementUnit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Simbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="certificatearticles" Relationship="siseobModel.fk_CertificateArticles_MeasurementUnit1" FromRole="measurementunit" ToRole="certificatearticle" />
+        </EntityType>
+        <EntityType Name="moneymovement">
+          <Key>
+            <PropertyRef Name="IdMoneyMovement" />
+          </Key>
+          <Property Name="IdMoneyMovement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <Property Name="IdMoneyMovementType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="moneymovementtype" Relationship="siseobModel.fk_MoneyMovements_MovementType1" FromRole="moneymovement" ToRole="moneymovementtype" />
+          <NavigationProperty Name="work" Relationship="siseobModel.fk_MoneyMovements_Work1" FromRole="moneymovement" ToRole="work" />
+        </EntityType>
+        <EntityType Name="moneymovementtype">
+          <Key>
+            <PropertyRef Name="IdMoneyMovementType" />
+          </Key>
+          <Property Name="IdMoneyMovementType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Sign" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="moneymovements" Relationship="siseobModel.fk_MoneyMovements_MovementType1" FromRole="moneymovementtype" ToRole="moneymovement" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="IdReceipt" />
+          </Key>
+          <Property Name="IdReceipt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IdWork" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="work" Relationship="siseobModel.fk_Receipt_Work1" FromRole="receipt" ToRole="work" />
+          <NavigationProperty Name="receiptdetails" Relationship="siseobModel.fk_ReceiptDetail_Receipt1" FromRole="receipt" ToRole="receiptdetail" />
+        </EntityType>
+        <EntityType Name="receiptdetail">
+          <Key>
+            <PropertyRef Name="IdReceiptDetail" />
+          </Key>
+          <Property Name="IdReceiptDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="IdReceipt" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="receipt" Relationship="siseobModel.fk_ReceiptDetail_Receipt1" FromRole="receiptdetail" ToRole="receipt" />
+        </EntityType>
+        <EntityType Name="tool">
+          <Key>
+            <PropertyRef Name="IdTool" />
+          </Key>
+          <Property Name="IdTool" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AdmissionDate" Type="DateTime" Nullable="false" />
+          <Property Name="IdToolType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignedtools" Relationship="siseobModel.fk_AssignedTool_Tool1" FromRole="tool" ToRole="assignedtool" />
+          <NavigationProperty Name="tooltype" Relationship="siseobModel.fk_Tool_ToolType1" FromRole="tool" ToRole="tooltype" />
+        </EntityType>
+        <EntityType Name="tooltype">
+          <Key>
+            <PropertyRef Name="IdToolType" />
+          </Key>
+          <Property Name="IdToolType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tools" Relationship="siseobModel.fk_Tool_ToolType1" FromRole="tooltype" ToRole="tool" />
+        </EntityType>
+        <EntityType Name="work">
+          <Key>
+            <PropertyRef Name="IdWork" />
+          </Key>
+          <Property Name="IdWork" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="FinishDate" Type="DateTime" />
+          <Property Name="PossibleEndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdLocation" Type="Int32" Nullable="false" />
+          <Property Name="IdWorkType" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignedemployees" Relationship="siseobModel.fk_AssignedEmployee_Work1" FromRole="work" ToRole="assignedemployee" />
+          <NavigationProperty Name="assignedtools" Relationship="siseobModel.fk_AssignedTool_Work1" FromRole="work" ToRole="assignedtool" />
+          <NavigationProperty Name="certificates" Relationship="siseobModel.fk_Certificate_Work1" FromRole="work" ToRole="certificate" />
+          <NavigationProperty Name="client" Relationship="siseobModel.fk_Work_Client1" FromRole="work" ToRole="client" />
+          <NavigationProperty Name="location" Relationship="siseobModel.fk_Work_Location1" FromRole="work" ToRole="location" />
+          <NavigationProperty Name="moneymovements" Relationship="siseobModel.fk_MoneyMovements_Work1" FromRole="work" ToRole="moneymovement" />
+          <NavigationProperty Name="receipts" Relationship="siseobModel.fk_Receipt_Work1" FromRole="work" ToRole="receipt" />
+          <NavigationProperty Name="worktype" Relationship="siseobModel.fk_Work_WorkType" FromRole="work" ToRole="worktype" />
+        </EntityType>
+        <EntityType Name="worktype">
+          <Key>
+            <PropertyRef Name="IdWorkType" />
+          </Key>
+          <Property Name="IdWorkType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="works" Relationship="siseobModel.fk_Work_WorkType" FromRole="worktype" ToRole="work" />
+        </EntityType>
+        <Association Name="fk_AssignedEmployee_Employee1">
+          <End Type="siseobModel.employee" Role="employee" Multiplicity="1" />
+          <End Type="siseobModel.assignedemployee" Role="assignedemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="assignedemployee">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedEmployee_Work1">
+          <End Type="siseobModel.work" Role="work" Multiplicity="1" />
+          <End Type="siseobModel.assignedemployee" Role="assignedemployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="assignedemployee">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedTool_Tool1">
+          <End Type="siseobModel.tool" Role="tool" Multiplicity="1" />
+          <End Type="siseobModel.assignedtool" Role="assignedtool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tool">
+              <PropertyRef Name="IdTool" />
+            </Principal>
+            <Dependent Role="assignedtool">
+              <PropertyRef Name="IdTool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AssignedTool_Work1">
+          <End Type="siseobModel.work" Role="work" Multiplicity="1" />
+          <End Type="siseobModel.assignedtool" Role="assignedtool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="assignedtool">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Certificate_CertificateType1">
+          <End Type="siseobModel.certificatetype" Role="certificatetype" Multiplicity="1" />
+          <End Type="siseobModel.certificate" Role="certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatetype">
+              <PropertyRef Name="IdCertificateType" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="IdCertificateType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Certificate_Work1">
+          <End Type="siseobModel.work" Role="work" Multiplicity="1" />
+          <End Type="siseobModel.certificate" Role="certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="certificate">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateDetail_Certificate1">
+          <End Type="siseobModel.certificate" Role="certificate" Multiplicity="1" />
+          <End Type="siseobModel.certificatedetail" Role="certificatedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificate">
+              <PropertyRef Name="IdCertificate" />
+            </Principal>
+            <Dependent Role="certificatedetail">
+              <PropertyRef Name="IdCertificate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Work_Client1">
+          <End Type="siseobModel.client" Role="client" Multiplicity="1" />
+          <End Type="siseobModel.work" Role="work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="work">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_EmployeeType1">
+          <End Type="siseobModel.employeetype" Role="employeetype" Multiplicity="1" />
+          <End Type="siseobModel.employee" Role="employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employeetype">
+              <PropertyRef Name="IdEmployeeType" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="IdEmployeeType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Work_Location1">
+          <End Type="siseobModel.location" Role="location" Multiplicity="1" />
+          <End Type="siseobModel.work" Role="work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="IdLocation" />
+            </Principal>
+            <Dependent Role="work">
+              <PropertyRef Name="IdLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MoneyMovements_MovementType1">
+          <End Type="siseobModel.moneymovementtype" Role="moneymovementtype" Multiplicity="1" />
+          <End Type="siseobModel.moneymovement" Role="moneymovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="moneymovementtype">
+              <PropertyRef Name="IdMoneyMovementType" />
+            </Principal>
+            <Dependent Role="moneymovement">
+              <PropertyRef Name="IdMoneyMovementType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MoneyMovements_Work1">
+          <End Type="siseobModel.work" Role="work" Multiplicity="1" />
+          <End Type="siseobModel.moneymovement" Role="moneymovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="moneymovement">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Receipt_Work1">
+          <End Type="siseobModel.work" Role="work" Multiplicity="1" />
+          <End Type="siseobModel.receipt" Role="receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="work">
+              <PropertyRef Name="IdWork" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="IdWork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ReceiptDetail_Receipt1">
+          <End Type="siseobModel.receipt" Role="receipt" Multiplicity="1" />
+          <End Type="siseobModel.receiptdetail" Role="receiptdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="receipt">
+              <PropertyRef Name="IdReceipt" />
+            </Principal>
+            <Dependent Role="receiptdetail">
+              <PropertyRef Name="IdReceipt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tool_ToolType1">
+          <End Type="siseobModel.tooltype" Role="tooltype" Multiplicity="1" />
+          <End Type="siseobModel.tool" Role="tool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tooltype">
+              <PropertyRef Name="IdToolType" />
+            </Principal>
+            <Dependent Role="tool">
+              <PropertyRef Name="IdToolType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Work_WorkType">
+          <End Type="siseobModel.worktype" Role="worktype" Multiplicity="1" />
+          <End Type="siseobModel.work" Role="work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="worktype">
+              <PropertyRef Name="IdWorkType" />
+            </Principal>
+            <Dependent Role="work">
+              <PropertyRef Name="IdWorkType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="articleprice">
+          <Key>
+            <PropertyRef Name="IdArticlePrices" />
+          </Key>
+          <Property Name="IdArticlePrices" Type="Int32" Nullable="false" />
+          <Property Name="UnitCost" Type="Decimal" Nullable="false" />
+          <Property Name="IdCertificateArticles" Type="Int32" Nullable="false" />
+          <Property Name="IdPriceList" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pricelist" Relationship="siseobModel.fk_articleprices_pricelist1" FromRole="articleprice" ToRole="pricelist" />
+          <NavigationProperty Name="certificatearticle" Relationship="siseobModel.fk_articleprices_certificatearticles1" FromRole="articleprice" ToRole="certificatearticle" />
+        </EntityType>
+        <EntityType Name="pricelist">
+          <Key>
+            <PropertyRef Name="IdPriceList" />
+          </Key>
+          <Property Name="IdPriceList" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="articleprices" Relationship="siseobModel.fk_articleprices_pricelist1" FromRole="pricelist" ToRole="articleprice" />
+        </EntityType>
+        <Association Name="fk_articleprices_pricelist1">
+          <End Type="siseobModel.pricelist" Role="pricelist" Multiplicity="1" />
+          <End Type="siseobModel.articleprice" Role="articleprice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pricelist">
+              <PropertyRef Name="IdPriceList" />
+            </Principal>
+            <Dependent Role="articleprice">
+              <PropertyRef Name="IdPriceList" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="certificatearticle">
+          <Key>
+            <PropertyRef Name="IdCertificateArticles" />
+          </Key>
+          <Property Name="IdCertificateArticles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdMeasurementUnit" Type="Int32" Nullable="false" />
+          <Property Name="IdCertificateArticleItem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="articleprices" Relationship="siseobModel.fk_articleprices_certificatearticles1" FromRole="certificatearticle" ToRole="articleprice" />
+          <NavigationProperty Name="certificatearticleitem" Relationship="siseobModel.fk_CertificateArticles_CertificateArticleItem1" FromRole="certificatearticle" ToRole="certificatearticleitem" />
+          <NavigationProperty Name="measurementunit" Relationship="siseobModel.fk_CertificateArticles_MeasurementUnit1" FromRole="certificatearticle" ToRole="measurementunit" />
+          <NavigationProperty Name="certificatedetails" Relationship="siseobModel.fk_CertificateDetail_CertificateArticles1" FromRole="certificatearticle" ToRole="certificatedetail" />
+        </EntityType>
+        <Association Name="fk_articleprices_certificatearticles1">
+          <End Type="siseobModel.certificatearticle" Role="certificatearticle" Multiplicity="1" />
+          <End Type="siseobModel.articleprice" Role="articleprice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatearticle">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Principal>
+            <Dependent Role="articleprice">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateArticles_CertificateArticleItem1">
+          <End Type="siseobModel.certificatearticleitem" Role="certificatearticleitem" Multiplicity="1" />
+          <End Type="siseobModel.certificatearticle" Role="certificatearticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatearticleitem">
+              <PropertyRef Name="IdCertificateArticleItem" />
+            </Principal>
+            <Dependent Role="certificatearticle">
+              <PropertyRef Name="IdCertificateArticleItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateArticles_MeasurementUnit1">
+          <End Type="siseobModel.measurementunit" Role="measurementunit" Multiplicity="1" />
+          <End Type="siseobModel.certificatearticle" Role="certificatearticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measurementunit">
+              <PropertyRef Name="IdMeasurementUnit" />
+            </Principal>
+            <Dependent Role="certificatearticle">
+              <PropertyRef Name="IdMeasurementUnit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CertificateDetail_CertificateArticles1">
+          <End Type="siseobModel.certificatearticle" Role="certificatearticle" Multiplicity="1" />
+          <End Type="siseobModel.certificatedetail" Role="certificatedetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certificatearticle">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Principal>
+            <Dependent Role="certificatedetail">
+              <PropertyRef Name="IdCertificateArticles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="siseobModelStoreContainer" CdmEntityContainer="siseobEntities">
+          <EntitySetMapping Name="assignedemployees">
+            <EntityTypeMapping TypeName="siseobModel.assignedemployee">
+              <MappingFragment StoreEntitySet="assignedemployee">
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+                <ScalarProperty Name="DateOfDeallocate" ColumnName="DateOfDeallocate" />
+                <ScalarProperty Name="DateOfAssignment" ColumnName="DateOfAssignment" />
+                <ScalarProperty Name="IdAssignedEmployee" ColumnName="IdAssignedEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assignedtools">
+            <EntityTypeMapping TypeName="siseobModel.assignedtool">
+              <MappingFragment StoreEntitySet="assignedtool">
+                <ScalarProperty Name="IdTool" ColumnName="IdTool" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+                <ScalarProperty Name="DateOfDeallocate" ColumnName="DateOfDeallocate" />
+                <ScalarProperty Name="DateOfAssignment" ColumnName="DateOfAssignment" />
+                <ScalarProperty Name="IdAssignedTool" ColumnName="IdAssignedTool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="certificates">
+            <EntityTypeMapping TypeName="siseobModel.certificate">
+              <MappingFragment StoreEntitySet="certificate">
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="WorkProgress" ColumnName="WorkProgress" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CertificateNumber" ColumnName="CertificateNumber" />
+                <ScalarProperty Name="IdCertificateType" ColumnName="IdCertificateType" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="IdCertificate" ColumnName="IdCertificate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="certificatearticleitems">
+            <EntityTypeMapping TypeName="siseobModel.certificatearticleitem">
+              <MappingFragment StoreEntitySet="certificatearticleitem">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdCertificateArticleItem" ColumnName="IdCertificateArticleItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="certificatedetails">
+            <EntityTypeMapping TypeName="siseobModel.certificatedetail">
+              <MappingFragment StoreEntitySet="certificatedetail">
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IdCertificateArticles" ColumnName="IdCertificateArticles" />
+                <ScalarProperty Name="IdCertificate" ColumnName="IdCertificate" />
+                <ScalarProperty Name="IdCertificateDetail" ColumnName="IdCertificateDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="certificatetypes">
+            <EntityTypeMapping TypeName="siseobModel.certificatetype">
+              <MappingFragment StoreEntitySet="certificatetype">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdCertificateType" ColumnName="IdCertificateType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="siseobModel.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CuitCuil" ColumnName="CuitCuil" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="siseobModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="AgreedSalary" ColumnName="AgreedSalary" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="Cuil" ColumnName="Cuil" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IdEmployeeType" ColumnName="IdEmployeeType" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employeetypes">
+            <EntityTypeMapping TypeName="siseobModel.employeetype">
+              <MappingFragment StoreEntitySet="employeetype">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdEmployeeType" ColumnName="IdEmployeeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="siseobModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdLocation" ColumnName="IdLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="measurementunits">
+            <EntityTypeMapping TypeName="siseobModel.measurementunit">
+              <MappingFragment StoreEntitySet="measurementunit">
+                <ScalarProperty Name="Simbol" ColumnName="Simbol" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdMeasurementUnit" ColumnName="IdMeasurementUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="moneymovements">
+            <EntityTypeMapping TypeName="siseobModel.moneymovement">
+              <MappingFragment StoreEntitySet="moneymovement">
+                <ScalarProperty Name="IdMoneyMovementType" ColumnName="IdMoneyMovementType" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IdMoneyMovement" ColumnName="IdMoneyMovement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="moneymovementtypes">
+            <EntityTypeMapping TypeName="siseobModel.moneymovementtype">
+              <MappingFragment StoreEntitySet="moneymovementtype">
+                <ScalarProperty Name="Sign" ColumnName="Sign" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdMoneyMovementType" ColumnName="IdMoneyMovementType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receipts">
+            <EntityTypeMapping TypeName="siseobModel.receipt">
+              <MappingFragment StoreEntitySet="receipt">
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="IdReceipt" ColumnName="IdReceipt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receiptdetails">
+            <EntityTypeMapping TypeName="siseobModel.receiptdetail">
+              <MappingFragment StoreEntitySet="receiptdetail">
+                <ScalarProperty Name="IdReceipt" ColumnName="IdReceipt" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IdReceiptDetail" ColumnName="IdReceiptDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tools">
+            <EntityTypeMapping TypeName="siseobModel.tool">
+              <MappingFragment StoreEntitySet="tool">
+                <ScalarProperty Name="IdToolType" ColumnName="IdToolType" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdTool" ColumnName="IdTool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tooltypes">
+            <EntityTypeMapping TypeName="siseobModel.tooltype">
+              <MappingFragment StoreEntitySet="tooltype">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdToolType" ColumnName="IdToolType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="works">
+            <EntityTypeMapping TypeName="siseobModel.work">
+              <MappingFragment StoreEntitySet="work">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdWorkType" ColumnName="IdWorkType" />
+                <ScalarProperty Name="IdLocation" ColumnName="IdLocation" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PossibleEndDate" ColumnName="PossibleEndDate" />
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdWork" ColumnName="IdWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="worktypes">
+            <EntityTypeMapping TypeName="siseobModel.worktype">
+              <MappingFragment StoreEntitySet="worktype">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdWorkType" ColumnName="IdWorkType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="articleprices">
+            <EntityTypeMapping TypeName="siseobModel.articleprice">
+              <MappingFragment StoreEntitySet="articleprices">
+                <ScalarProperty Name="IdPriceList" ColumnName="IdPriceList" />
+                <ScalarProperty Name="IdCertificateArticles" ColumnName="IdCertificateArticles" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="IdArticlePrices" ColumnName="IdArticlePrices" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pricelists">
+            <EntityTypeMapping TypeName="siseobModel.pricelist">
+              <MappingFragment StoreEntitySet="pricelist">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdPriceList" ColumnName="IdPriceList" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="certificatearticles">
+            <EntityTypeMapping TypeName="siseobModel.certificatearticle">
+              <MappingFragment StoreEntitySet="certificatearticles">
+                <ScalarProperty Name="IdCertificateArticleItem" ColumnName="IdCertificateArticleItem" />
+                <ScalarProperty Name="IdMeasurementUnit" ColumnName="IdMeasurementUnit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdCertificateArticles" ColumnName="IdCertificateArticles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="SynchronizePropertyFacets" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

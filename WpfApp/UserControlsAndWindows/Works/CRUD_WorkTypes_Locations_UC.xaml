@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="WpfApp.UserControlsAndWindows.Works.CRUD_WorkTypes_Locations_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Works"
+             mc:Ignorable="d" 
+              Width="Auto" Height="Auto">
+    <Grid Height="Auto" Width="Auto">
+        <Button x:Name="btn_AdmTiposObra" Content="Administrar Tipos de Obra" HorizontalAlignment="Left" VerticalAlignment="Top" Width="440" Height="55" FontSize="22" BorderBrush="#FFFFBB33" Click="btn_AdmTiposObra_Click" Background="#FFFFBB33" />
+        <Button x:Name="btn_AdmUbicacionesObra" Content="Administrar Ubicaciones de Obra" HorizontalAlignment="Left" Margin="441,0,-3,0" VerticalAlignment="Top" Width="440" Height="55" FontSize="22" BorderBrush="#FFFFBB33" Click="btn_AdmUbicacionesObra_Click" Background="#FFFFBB33" />
+        <StackPanel HorizontalAlignment="Left" Margin="15,60,0,0" Width="Auto" x:Name="sp_UserControls1" Height="Auto" VerticalAlignment="Top" />
+        <StackPanel HorizontalAlignment="Left" Margin="455,60,0,0" Width="Auto" x:Name="sp_UserControls2" Height="Auto" VerticalAlignment="Top" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="WpfApp.UserControlsAndWindows.Finances.AdmFinances_W"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Finances"
+        mc:Ignorable="d"
+        Title="Administrar Finanzas" 
+        Height="229.779" Width="759.028" Background="#FF515151" 
+        WindowStyle="ToolWindow" 
+        MaxHeight="229.779" MaxWidth="759.028" Loaded="Window_Loaded" >
+    <Grid Width="Auto" Height="Auto">
+        <Rectangle Height="171" Margin="10,10,0,0" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="723"/>
+        <Label x:Name="lbl_Titulo" Content="Movimientos Contables de la Obra" Margin="12,13,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="Auto"/>
+        <Label x:Name="lbl_Nombres" Content="Monto:" HorizontalAlignment="Left" Margin="26,53,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="61" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombres" DataContext="{Binding}" Text="{Binding Monto, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="87,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" FontSize="16"/>
+        <Button x:Name="btn_GuardarMovimiento" Content="Guardar" HorizontalAlignment="Left" Margin="272,53,0,0" VerticalAlignment="Top" Width="96" Height="28" Background="#FF00C851" BorderBrush="{x:Null}"  FontSize="16" Click="btn_GuardarMovimiento_Click" />
+        <ListView x:Name="listView" ItemsSource="{Binding ListaMovimientosObra}" HorizontalAlignment="Left" Height="156" Margin="373,16,0,0" VerticalAlignment="Top" Width="353">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Monto" DisplayMemberBinding="{Binding Amount,StringFormat={}{0:C},ConverterCulture=es-AR}"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding MoneyMovementType.Name}"/>
+                    <GridViewColumn Header="Signo" DisplayMemberBinding="{Binding MoneyMovementType.Sign}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btn_ActualizarMovimiento" Content="Actualizar" HorizontalAlignment="Left" Margin="272,144,0,0" VerticalAlignment="Top" Width="96" Height="28" Background="#FFFFBB33" BorderBrush="{x:Null}" FontSize="16" Click="btn_ActualizarMovimiento_Click" />
+        <Rectangle Height="304" Margin="10,201,0,0" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="723"/>
+        <Label x:Name="lbl_Comprobantes" Content="Comprobantes de Compras de la Obra" Margin="10,201,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="Auto"/>
+        <Label x:Name="lbl_FechaComprobante" Content="Fecha del Combrobante:" HorizontalAlignment="Left" Margin="17,238,0,0" VerticalAlignment="Top" Foreground="White" Height="28" FontSize="16"/>
+        <DatePicker x:Name="dpk_Nacimiento"  SelectedDate="{Binding Nacimiento}" HorizontalAlignment="Left" Margin="199,238,0,0" VerticalAlignment="Top" Width="171" Height="28" FontSize="16"/>
+        <Label x:Name="lbl_Nombres_Copy" Content="Nro del Comprobante:" HorizontalAlignment="Left" Margin="31,270,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="168" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombres_Copy" DataContext="{Binding}" Text="{Binding Nombres, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="199,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="16"/>
+        <ListView x:Name="listView_Copy" ItemsSource="{Binding xxx}" HorizontalAlignment="Left" Height="190" Margin="17,308,0,0" VerticalAlignment="Top" Width="709">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Cantidad" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Descripcion" DisplayMemberBinding="{Binding Sign}"/>
+                    <GridViewColumn Header="Precio Unitario" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Precio Total" DisplayMemberBinding="{Binding Description}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btn_AgregarItemDetalle" Content="Agregar Línea al Detalle" HorizontalAlignment="Left" Margin="544,266,0,0" VerticalAlignment="Top" Width="182" Height="37" Background="#FFFFBB33" BorderBrush="{x:Null}" FontSize="16" />
+        <Button x:Name="btn_GuardarComprobante" Content="GUARDAR" HorizontalAlignment="Left" Margin="610,223,0,0" VerticalAlignment="Top" Width="116" Height="37" Background="#FF00C851" BorderBrush="{x:Null}"/>
+        <Label x:Name="lbl_TipoObra" Content="Tipos:" HorizontalAlignment="Left" Margin="36,86,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="51" FontSize="16" />
+        <ComboBox x:Name="cbx_TiposMovimiento" 
+            ItemsSource="{Binding TiposMovimientoContable}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdMoneyMovementType" 
+            SelectedItem="{Binding TipoMovimientoSeleccionado}"
+            HorizontalAlignment="Left" Margin="87,86,0,0" VerticalAlignment="Top" Width="281" FontSize="16"/>
+        <Button x:Name="btn_Cancelar" Content="Cancelar" FontSize="16" HorizontalAlignment="Left" Margin="171,144,0,0" VerticalAlignment="Top" Width="96" Height="28" Click="btn_Cancelar_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,53 @@
+﻿<Window x:Class="WpfApp.UserControlsAndWindows.Employees.UpdateEmployee_W"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Employees"
+        mc:Ignorable="d"
+        Title="Actualizar Empleado" 
+        Height="521.779" Width="444.484" 
+        Background="#FF515151" WindowStyle="ToolWindow" Loaded="Window_Loaded" >
+    <Grid Width="Auto" Height="Auto">
+        <Rectangle Height="463" Margin="10,10,0,0" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410"/>
+        <Label x:Name="lbl_Titulo" Content="Modifique Los Datos Del Empleado" Margin="15,8,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="Auto"/>
+        <Label x:Name="lbl_Nombres" Content="Nombres:" HorizontalAlignment="Left" Margin="33,53,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="78" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombres" DataContext="{Binding}" Text="{Binding Path=Nombres,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="116,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" FontSize="16"/>
+
+        <Label x:Name="lbl_Apellidos" Content="Apellidos:" HorizontalAlignment="Left" Margin="33,86,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="78" FontSize="16"/>
+        <TextBox x:Name="tbx_Apellidos" DataContext="{Binding}" Text="{Binding Path=Apellidos,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="116,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" FontSize="16"/>
+
+        <Label x:Name="lbl_Direccion" Content="Direccion:" HorizontalAlignment="Left" Margin="33,119,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="78" FontSize="16"/>
+        <TextBox x:Name="tbx_Direccion" DataContext="{Binding}" Text="{Binding Path=Direccion,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="116,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" FontSize="16"/>
+
+        <Label x:Name="lbl_Nacimiento" Content="Fecha de Nacimiento:" HorizontalAlignment="Left" Margin="33,152,0,0" VerticalAlignment="Top" Foreground="White" Height="28" FontSize="16"/>
+        <DatePicker Name="dpk_Nacimiento"  SelectedDate="{Binding Nacimiento}" HorizontalAlignment="Left" Margin="200,152,0,0" VerticalAlignment="Top" Width="157" Height="28" FontSize="16"/>
+
+        <Label x:Name="lbl_Telefono1" Content="Telefono 1:" HorizontalAlignment="Left" Margin="32,185,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="89" FontSize="16" />
+        <TextBox x:Name="txt_Telefono1" DataContext="{Binding}" Text="{Binding Path=Telefono1,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="126,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="16"/>
+
+        <Label x:Name="lbl_Telefono2" Content="Telefono 2:" HorizontalAlignment="Left" Margin="33,218,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="93" FontSize="16"/>
+        <TextBox x:Name="txt_Telefono2" DataContext="{Binding}" Text="{Binding Path=Telefono2,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="126,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="16"/>
+
+        <Label x:Name="lbl_DNI" Content="DNI:" HorizontalAlignment="Left" Margin="78,251,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="41" FontSize="16"/>
+        <TextBox x:Name="txt_DNI" DataContext="{Binding}" Text="{Binding Path=Documento,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="126,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="16"/>
+
+        <Label x:Name="lbl_CUIL" Content="CUIL:" HorizontalAlignment="Left" Margin="73,284,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="52" FontSize="16"/>
+        <TextBox x:Name="txt_DNI_Copy" DataContext="{Binding}" Text="{Binding Path=Cuil,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="126,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="16"/>
+
+        <Label x:Name="lbl_FechaIngreso" Content="Fecha de Ingreso:" HorizontalAlignment="Left" Margin="33,317,0,0" VerticalAlignment="Top" Foreground="White" Height="44" Width="135" FontSize="16"/>
+        <DatePicker x:Name="dpk_Ingreso" SelectedDate="{Binding Ingreso}" HorizontalAlignment="Left" Margin="173,317,0,0" VerticalAlignment="Top" Width="184" Height="28"  FontSize="16"/>
+
+        <Button x:Name="btn_Guardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="229,416,0,0" VerticalAlignment="Top" Width="158" Height="44" Background="#FF00C851" BorderBrush="{x:Null}" Click="btn_Guardar_Click"/>
+
+        <Label x:Name="lbl_TipoEmpleado" Content="Tipo de Empleado:" HorizontalAlignment="Left" Margin="27,383,0,0" VerticalAlignment="Top" Foreground="White" Height="43" Width="141" FontSize="16"/>
+        <ComboBox x:Name="cbx_TipoEmpleado" 
+                  ItemsSource="{Binding TiposEmpleado}" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="IdEmployeeType" 
+                  SelectedItem="{Binding TipoEmpleadoSeleccionado}"
+                  HorizontalAlignment="Left" Margin="173,383,0,0" VerticalAlignment="Top" Width="214" FontSize="16" Height="28"/>
+        <Label x:Name="lbl_SaladioAcordado" Content="Jornal Acordado:" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="130" FontSize="16"/>
+        <TextBox x:Name="txt_SalarioAcordado" DataContext="{Binding}" Text="{Binding SalarioAcordado, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="140,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" FontSize="16"/>
+    </Grid>
+</Window>

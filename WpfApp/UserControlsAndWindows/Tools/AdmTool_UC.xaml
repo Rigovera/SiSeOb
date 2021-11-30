@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="WpfApp.UserControlsAndWindows.Tools.AdmTool_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Tools"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto" Loaded="UserControl_Loaded" >
+    <Grid>
+        <Rectangle Height="490" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="850" Margin="0,10,0,0"/>
+        <Label x:Name="lbl_Titulo" Content="Filtrar Herramientas Por:" Margin="29,14,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="241"/>
+        <DataGrid x:Name="dataGrid_Herramientas" AutoGenerateColumns="False"
+            IsReadOnly="False"
+            SelectionMode="Single"
+            ItemsSource="{Binding Herramientas, Mode=TwoWay}"
+            HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Height="353" Width="830">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdTool, Mode=TwoWay}" FontSize="16" Header="ID" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name, Mode=TwoWay}" FontSize="16" Header="Nombre" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Model, Mode=TwoWay}" FontSize="16" Header="Modelo" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Brand, Mode=TwoWay}" FontSize="16" Header="Marca" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding SerialNumber, Mode=TwoWay}" FontSize="16" Header="Número de Serie" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding AdmissionDate, StringFormat='dd/MM/yyyy', Mode=OneWay}" FontSize="16" Header="Fecha de Alta" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ToolType.Name, Mode=TwoWay}" FontSize="16" Header="Tipo" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Description, Mode=TwoWay}" FontSize="16" Header="Descripción" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_BorrarHerramienta" Visibility="Hidden" Content="Borrar Herramienta" HorizontalAlignment="Left" Margin="10,450,0,-188" VerticalAlignment="Top" Width="157" Height="38" FontSize="16" Background="#FFFF4444" BorderBrush="#FFFF4444"/>
+        <Button x:Name="btn_ActualizarHerramienta" Content="Actualizar Herramienta" HorizontalAlignment="Left" Margin="664,20,0,0" VerticalAlignment="Top" Width="176" Height="38" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_ActualizarHerramienta_Click" />
+        <Label x:Name="lbl_Nombre" Content="Nombre:" HorizontalAlignment="Left" Margin="97,89,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="73" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombre" DataContext="{Binding}" Text="{Binding Nombre, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="170,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" FontSize="16"/>
+        <Label x:Name="lbl_Marca" Content="Marca:" HorizontalAlignment="Left" Margin="478,89,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="58" FontSize="16"/>
+        <TextBox x:Name="tbx_Marca" DataContext="{Binding}" Text="{Binding Marca, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="536,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16"/>
+        <Label x:Name="lbl_TipoHerramienta" Content="Tipo de Herramienta:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Foreground="White" Height="33" Width="160" FontSize="16" />
+        <ComboBox x:Name="cbx_TipoHerramienta" 
+                  ItemsSource="{Binding TiposHerramienta}" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="IdToolType" 
+                  SelectedItem="{Binding TipoHerramientaSeleccionada}"
+                  HorizontalAlignment="Left" Margin="170,56,0,0" VerticalAlignment="Top" Width="202" FontSize="16" SelectionChanged="cbx_TipoHerramienta_SelectionChanged"/>
+        <Button x:Name="btn_Filtrar_Marca" Content="Filtrar" HorizontalAlignment="Left" Margin="764,89,0,0" VerticalAlignment="Top" Width="76" Height="28" FontSize="16" Background="#FF33B5E5" BorderBrush="#FF33B5E5" Click="btn_Filtrar_Marca_Click" />
+        <Button x:Name="btn_Filtrar_Nombre" Content="Filtrar" HorizontalAlignment="Left" Margin="377,89,0,0" VerticalAlignment="Top" Width="76" Height="28" FontSize="16" Background="#FF33B5E5" BorderBrush="#FF33B5E5" Click="btn_Filtrar_Nombre_Click" />
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Certificates"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="WpfApp.UserControlsAndWindows.Certificates.NewCertificateArticle_UC"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
+    <Grid Width="Auto" Height="398">
+        <Rectangle Height="388" Margin="4,10,0,0" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="529"/>
+        <Label x:Name="lbl_Titulo" Content="Ingrese Los Datos Del Nuevo Articulo" Margin="42,14,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="355"/>
+        <Label x:Name="lbl_Nombre" Content="Nombre:" HorizontalAlignment="Left" Margin="50,53,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="76" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombre" DataContext="{Binding}" Text="{Binding Path=Nombre,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="122,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" FontSize="16"/>
+        <TextBox x:Name="textBox" DataContext="{Binding}" Text="{Binding Path=Descripcion,Mode=TwoWay}" HorizontalAlignment="Left" Height="99" Margin="122,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" AcceptsReturn="True"/>
+        <Label x:Name="lbl_Descripcion" Content="Descripción:" HorizontalAlignment="Left" Margin="26,86,0,0" VerticalAlignment="Top" Foreground="White" Height="36" Width="100" FontSize="16" />
+        <Label x:Name="lbl_RubroArticulo" Content="Rubro del Articulo:" HorizontalAlignment="Left" Margin="20,258,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="143" FontSize="16" />
+        <ComboBox x:Name="cbx_TipoHerramienta" 
+                  ItemsSource="{Binding Rubros}" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="IdCertificateArticleItem" 
+                  SelectedItem="{Binding RubroSeleccionado}"
+                  HorizontalAlignment="Left" Margin="163,258,0,0" VerticalAlignment="Top" Width="230" FontSize="16"/>
+        <Button x:Name="btn_Adm_Rubros" Content="Administrar Rubros" HorizontalAlignment="Left" Margin="398,258,0,0" VerticalAlignment="Top" Width="130" Height="27" Click="btn_Adm_Rubros_Click"/>
+        <Label x:Name="lbl_Unidades" Content="Unidad de Medida:" HorizontalAlignment="Left" Margin="17,291,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="147" FontSize="16" />
+        <ComboBox x:Name="cbx_Unidades" 
+                  ItemsSource="{Binding UnidadesMedida}" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="IdMeasurementUnit" 
+                  SelectedItem="{Binding UnidadMedidaSeleccionada}"
+                  HorizontalAlignment="Left" Margin="163,290,0,0" VerticalAlignment="Top" Width="230" FontSize="16"/>
+        <Button x:Name="btn_Adm_Unidades" Content="Administrar Unidades" HorizontalAlignment="Left" Margin="398,290,0,0" VerticalAlignment="Top" Width="130" Height="27" Click="btn_Adm_Unidades_Click"/>
+        <Button x:Name="btn_Guardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="235,338,0,0" VerticalAlignment="Top" Width="158" Height="35" Background="#FF00C851" BorderBrush="{x:Null}" Click="btn_Guardar_Click"/>
+        <Button x:Name="btn_Cancelar" Content="CANCELAR" HorizontalAlignment="Left" Margin="72,338,0,0" VerticalAlignment="Top" Width="158" Height="35" BorderBrush="{x:Null}" Click="btn_Cancelar_Click"/>
+        <Label x:Name="lbl_CostoUnitario" Content="Costo Unitario:" HorizontalAlignment="Left" Margin="47,225,0,0" VerticalAlignment="Top" Foreground="White" Height="33" Width="116" FontSize="16"/>
+        <TextBox x:Name="tbx_CostoUnitario" DataContext="{Binding}" Text="{Binding CostoUnitario, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="163,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" FontSize="16"/>
+        <Label x:Name="lbl_RubroArticulo_Copy" Content="Lista de precios:" HorizontalAlignment="Left" Margin="41,192,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="122" FontSize="16" />
+        <ComboBox x:Name="cbx_Listas_Precios" 
+            ItemsSource="{Binding ListasPrecios}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdPriceList" 
+            SelectedItem="{Binding ListaPreciosSeleccionada}"
+            HorizontalAlignment="Left" Margin="163,192,0,0" VerticalAlignment="Top" Width="230" FontSize="16" SelectionChanged="cbx_Listas_Precios_SelectionChanged"/>
+        <Button x:Name="btn_Adm_Listas" Content="Administrar Listas" HorizontalAlignment="Left" Margin="398,192,0,0" VerticalAlignment="Top" Width="130" Height="27" Click="btn_Adm_Listas_Click"/>
+        <Button x:Name="btn_Agregar_Precio" Content="Agregar Precio" HorizontalAlignment="Left" Margin="282,224,0,0" VerticalAlignment="Top" Width="111" Height="29" Background="#FF00C851" BorderBrush="{x:Null}" Click="btn_Agregar_Precio_Click"/>
+
+    </Grid>
+</UserControl>

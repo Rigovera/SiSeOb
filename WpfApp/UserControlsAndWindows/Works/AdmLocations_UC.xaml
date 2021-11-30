@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="WpfApp.UserControlsAndWindows.Works.AdmLocations_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Works"
+             mc:Ignorable="d" 
+             Width="Auto" Height="Auto" Loaded="UserControl_Loaded">
+    <Grid Height="Auto" Width="Auto">
+        <Rectangle Height="425" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Margin="0,10,0,0"/>
+        <Label x:Name="lbl_Nombre" Content="Ubicación:" HorizontalAlignment="Left" Margin="28,24,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="85" FontSize="16" />
+        <TextBox x:Name="tbx_Nombre" DataContext="{Binding}" Text="{Binding Path=Nombre,Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="113,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" FontSize="16" />
+        <TextBox x:Name="textBox" DataContext="{Binding}" Text="{Binding Path=Descripcion,Mode=TwoWay}" HorizontalAlignment="Left" Height="63" Margin="113,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" AcceptsReturn="True" />
+        <Label x:Name="lbl_Descripcion" Content="Descripción:" HorizontalAlignment="Left" Margin="17,57,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="96" FontSize="16"/>
+        <Button x:Name="btn_Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="113,125,0,0" VerticalAlignment="Top" Width="130" Height="34" FontSize="16" BorderBrush="{x:Null}" Click="btn_Cancelar_Click" />
+        <Button x:Name="btn_Guardar" Content="Guardar" HorizontalAlignment="Left" Margin="254,125,0,0" VerticalAlignment="Top" Width="130" Height="34" Background="#FF00C851" BorderBrush="{x:Null}" FontSize="16" Click="btn_Guardar_Click" />
+        <ListView x:Name="listView" ItemsSource="{Binding Ubicaciones}" HorizontalAlignment="Left" Height="222" Margin="45,164,0,0" VerticalAlignment="Top" Width="339">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                    <GridViewColumn Header="Descripción" DisplayMemberBinding="{Binding Description}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btn_Borrar" Visibility="Hidden" Content="Borrar" HorizontalAlignment="Left" Margin="113,391,0,0" VerticalAlignment="Top" Width="130" Height="34" Background="#FFFF4444" BorderBrush="{x:Null}" FontSize="16" Click="btn_Borrar_Click" />
+        <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="253,391,0,0" VerticalAlignment="Top" Width="130" Height="34" Background="#FFFFBB33" BorderBrush="{x:Null}" FontSize="16" Click="btn_Actualizar_Click"/>
+
+    </Grid>
+</UserControl>

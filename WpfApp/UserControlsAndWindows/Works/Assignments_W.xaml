@@ -1,0 +1,73 @@
+﻿<Window x:Class="WpfApp.UserControlsAndWindows.Works.Assignments_W"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Works"
+        mc:Ignorable="d"
+        Title="ASIGNACIONES" 
+         Height="707.941" Width="861.176" Background="#FF515151" WindowStyle="ToolWindow" Loaded="Window_Loaded" >
+
+    <Grid Width="Auto" Height="Auto">
+        <Rectangle Margin="10,10,0,0" Stroke="White" HorizontalAlignment="Left" Width="820" Height="594" VerticalAlignment="Top"/>
+        <ListView x:Name="lv_EmpleadosDisponibles" ItemsSource="{Binding EmpleadosDisponibles}" HorizontalAlignment="Left" Height="209" Margin="31,93,0,0" VerticalAlignment="Top" Width="314">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding EmployeeType.Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lbl_TipoEmpleado" Content="Tipo:" HorizontalAlignment="Left" Margin="24,60,0,0" VerticalAlignment="Top" Foreground="White" Height="37" Width="45" FontSize="16"/>
+        <ComboBox x:Name="cbx_TipoEmpleado" 
+            ItemsSource="{Binding TiposEmpleado}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdEmployeeType" 
+            SelectedItem="{Binding TipoEmpleadoSeleccionado}"
+            HorizontalAlignment="Left" Margin="74,60,0,0" VerticalAlignment="Top" Width="270" FontSize="16" Height="28" SelectionChanged="cbx_TipoEmpleado_SelectionChanged"/>
+        <Label x:Name="lbl_EmpleadosAsignados" Content="Empleados Disponibles:" Margin="31,19,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="313"/>
+        <ListView x:Name="lv_HerramientasDisponibles" ItemsSource="{Binding HerramientasDisponibles}" HorizontalAlignment="Left" Height="209" Margin="32,381,0,-7" VerticalAlignment="Top" Width="314">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Brand}"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding ToolType.Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lbl_TipoEmpleado_Copy" Content="Tipo:" HorizontalAlignment="Left" Margin="25,348,0,0" VerticalAlignment="Top" Foreground="White" Height="37" Width="45" FontSize="16"/>
+        <ComboBox x:Name="cbx_TipoHerramienta" 
+            ItemsSource="{Binding TiposHerramienta}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdToolType" 
+            SelectedItem="{Binding TipoHerramientaSeleccionada}"
+            HorizontalAlignment="Left" Margin="75,348,0,0" VerticalAlignment="Top" Width="270" FontSize="16" Height="28" SelectionChanged="cbx_TipoHerramienta_SelectionChanged"/>
+        <Label x:Name="lbl_EmpleadosAsignados_Copy" Content="Herramientas Disponibles:" Margin="32,307,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="313"/>
+        <Button x:Name="btn_AsignarEmpleado" Content="Asignar" HorizontalAlignment="Left" Margin="365,157,0,0" VerticalAlignment="Top" Width="110" Height="32" Background="#FF00C851" BorderBrush="{x:Null}" Click="btn_AsignarEmpleado_Click" />
+        <Button x:Name="btn_LiberarEmpleado" Content="Liberar" HorizontalAlignment="Left" Margin="365,194,0,0" VerticalAlignment="Top" Width="110" Height="32" Background="#FFFF4444" BorderBrush="{x:Null}" Click="btn_LiberarEmpleado_Click"/>
+        <ListView x:Name="lv_EmpleadosAsignados" ItemsSource="{Binding EmpleadosAsignados}" HorizontalAlignment="Left" Height="209" Margin="494,93,0,0" VerticalAlignment="Top" Width="314">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Employee.FirstName}"/>
+                    <GridViewColumn Header="Apellido" DisplayMemberBinding="{Binding Employee.LastName}"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding Employee.EmployeeType.Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lbl_EmpleadosAsignados_Copy1" Content="Empleados Asignados:" Margin="495,19,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="313"/>
+        <ListView x:Name="lv_HerramientasAsignadas" ItemsSource="{Binding HerramientasAsignadas}" HorizontalAlignment="Left" Height="209" Margin="495,381,0,0" VerticalAlignment="Top" Width="314">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Tool.Name}"/>
+                    <GridViewColumn Header="Marca" DisplayMemberBinding="{Binding Tool.Brand}"/>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding Tool.ToolType.Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lbl_EmpleadosAsignados_Copy2" Content="Herramientas Asignadas:" Margin="495,307,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="313"/>
+        <Button x:Name="btn_AsignarHerramienta" Content="Asignar" HorizontalAlignment="Left" Margin="365,455,0,0" VerticalAlignment="Top" Width="110" Height="32" Background="#FF00C851" BorderBrush="{x:Null}" Click="btn_AsignarHerramienta_Click" />
+        <Button x:Name="btn_LiberarHerramienta" Content="Liberar" HorizontalAlignment="Left" Margin="365,492,0,0" VerticalAlignment="Top" Width="110" Height="32" Background="#FFFF4444" BorderBrush="{x:Null}" Click="btn_LiberarHerramienta_Click"/>
+        <Button x:Name="btn_Guardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="341,609,0,0" VerticalAlignment="Top" Width="158" Height="44" Background="#FF00C851" BorderBrush="{x:Null}" Click="btn_Guardar_Click" />
+    </Grid>
+</Window>

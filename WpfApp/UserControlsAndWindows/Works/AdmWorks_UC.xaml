@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="WpfApp.UserControlsAndWindows.Works.AdmWorks_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Works"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto" Loaded="UserControl_Loaded">
+    <Grid>
+        <Rectangle Height="497" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="850" Margin="0,3,0,0"/>
+        <Label x:Name="lbl_Titulo" Content="Filtrar Obras Por:" Margin="1,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="166"/>
+        <DataGrid x:Name="dataGrid_Obras" AutoGenerateColumns="False"
+            IsReadOnly="False"
+            SelectionMode="Single"
+            ItemsSource="{Binding Obras, Mode=TwoWay}"
+            HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Height="290" Width="830">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdWork, Mode=TwoWay}" FontSize="16" Header="ID" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name, Mode=TwoWay}" FontSize="16" Header="Nombre" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding WorkType.Name, Mode=TwoWay}" FontSize="16" Header="Tipo" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Client.Name, Mode=TwoWay}" FontSize="16" Header="Cliente" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Location.Name, Mode=TwoWay}" FontSize="16" Header="Ubicación" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding StartDate,StringFormat='dd/MM/yy', Mode=TwoWay}" FontSize="16" Header="Fecha de Comienzo" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding PossibleEndDate,StringFormat='dd/MM/yy', Mode=TwoWay}" FontSize="16" Header="Fecha Posible de Fin" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FinishDate,StringFormat='dd/MM/yy', Mode=TwoWay}" FontSize="16" Header="Fecha de Fin" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Description, Mode=TwoWay}" FontSize="16" Header="Notas" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_ActualizarObra" Content="Actualizar Obra" HorizontalAlignment="Left" Margin="661,462,0,0" VerticalAlignment="Top" Width="178" Height="32" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_ActualizarObra_Click" />
+        <Label x:Name="lbl_Nombre" Content="Nombre:" HorizontalAlignment="Left" Margin="51,37,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="73" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombre"  DataContext="{Binding}" Text="{Binding Nombre, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="124,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" FontSize="16"/>
+        <Label x:Name="lbl_FechaInicio" Content="Fecha de Inicio:" HorizontalAlignment="Left" Margin="488,67,0,0" VerticalAlignment="Top" Foreground="White" Height="38" Width="120" FontSize="16"/>
+        <DatePicker x:Name="dpk_Inicio" SelectedDate="{Binding FechaInicio}" HorizontalAlignment="Left" Margin="608,67,0,0" VerticalAlignment="Top" Width="180" Height="28"  FontSize="16" SelectedDateChanged="dpk_Inicio_SelectedDateChanged"/>
+        <Label x:Name="lbl_FechaFinPosible" Content="Fecha de Fin Posible:" HorizontalAlignment="Left" Margin="451,100,0,0" VerticalAlignment="Top" Foreground="White" Height="38" Width="157" FontSize="16"/>
+        <DatePicker x:Name="dpk_FinPosible" SelectedDate="{Binding FechaFinPosible}" HorizontalAlignment="Left" Margin="608,100,0,0" VerticalAlignment="Top" Width="180" Height="28"  FontSize="16" SelectedDateChanged="dpk_FinPosible_SelectedDateChanged"/>
+        <Label x:Name="lbl_FechaFin" Content="Fecha de Fin:" HorizontalAlignment="Left" Margin="505,134,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="103" FontSize="16"/>
+        <DatePicker x:Name="dpk_FinPosible_Copy" SelectedDate="{Binding FechaFinPosible}" HorizontalAlignment="Left" Margin="608,133,0,0" VerticalAlignment="Top" Width="180" Height="28"  FontSize="16" SelectedDateChanged="dpk_Fin_SelectedDateChanged"/>
+        <Label x:Name="lbl_TipoObra" Content="Tipo de Obra:" HorizontalAlignment="Left" Margin="16,69,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="108" FontSize="16" />
+        <ComboBox x:Name="cbx_TiposObra" 
+            ItemsSource="{Binding ListaTiposObra}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdWorkType" 
+            SelectedItem="{Binding TipoObraSeleccionado}"
+            HorizontalAlignment="Left" Margin="124,70,0,0" VerticalAlignment="Top" Width="318" FontSize="16" SelectionChanged="cbx_TiposObra_SelectionChanged"/>
+        <Label x:Name="lbl_Ubicacion" Content="Ubicación:" HorizontalAlignment="Left" Margin="40,102,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="84" FontSize="16" />
+        <ComboBox x:Name="cbx_Ubicaciones" 
+            ItemsSource="{Binding ListaUbicaciones}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdLocation" 
+            SelectedItem="{Binding UbicacionSeleccionada}"
+            HorizontalAlignment="Left" Margin="124,102,0,0" VerticalAlignment="Top" Width="318" FontSize="16" SelectionChanged="cbx_Ubicaciones_SelectionChanged"/>
+        <Label x:Name="lbl_Cliente" Content="Cliente:" HorizontalAlignment="Left" Margin="60,134,0,0" VerticalAlignment="Top" Foreground="White" Height="27" Width="64" FontSize="16" />
+        <ComboBox x:Name="cbx_Clientes" 
+            ItemsSource="{Binding ListaClientes}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdClient" 
+            SelectedItem="{Binding ClienteSeleccionado}"
+            HorizontalAlignment="Left" Margin="124,134,0,0" VerticalAlignment="Top" Width="318" FontSize="16" SelectionChanged="cbx_Clientes_SelectionChanged"/>
+        <Button x:Name="btn_ConsultarSituacion" Content="Consultar Situación" HorizontalAlignment="Left" Margin="608,10,0,0" VerticalAlignment="Top" Width="180" Height="27" FontSize="16" Background="#FF33B5E5" BorderBrush="#FF33B5E5" Click="btn_ConsultarSituacion_Click"/>
+        <Button x:Name="btn_Asignaciones" Content="Administrar Asignaciones" HorizontalAlignment="Left" Margin="444,462,0,0" VerticalAlignment="Top" Width="215" Height="32" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_Asignaciones_Click" />
+        <Button x:Name="btn_AdministrarFinanzas" Content="Administrar Contabilidad" HorizontalAlignment="Left" Margin="10,462,0,0" VerticalAlignment="Top" Width="215" Height="32" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_AdministrarFinanzas_Click" />
+        <Button x:Name="btn_AdministrarCertificados" Content="Administrar Certificados" HorizontalAlignment="Left" Margin="227,462,0,0" VerticalAlignment="Top" Width="215" Height="32" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_AdministrarCertificados_Click" />
+        <Button x:Name="btn_Filtrar" Content="Filtrar" HorizontalAlignment="Left" Margin="366,37,0,0" VerticalAlignment="Top" Width="76" Height="28" FontSize="16" Background="#FF33B5E5" BorderBrush="#FF33B5E5" Click="btn_Filtrar_Click"/>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="WpfApp.UserControlsAndWindows.Certificates.AdmCertificateArticle_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Certificates"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto" Loaded="UserControl_Loaded" >
+    <Grid>
+        <Rectangle Height="490" Stroke="White" VerticalAlignment="Top" HorizontalAlignment="Left" Width="850" Margin="0,10,0,0"/>
+        <Label x:Name="lbl_RubroArticulo" Content="Rubro del Articulo:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="142" FontSize="16" />
+        <ComboBox x:Name="cbx_RubroArticulo" 
+            ItemsSource="{Binding Rubros}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdCertificateArticleItem" 
+            SelectedItem="{Binding RubroSeleccionado}"
+            HorizontalAlignment="Left" Margin="152,56,0,0" VerticalAlignment="Top" Width="194" FontSize="16" SelectionChanged="cbx_RubroArticulo_SelectionChanged"/>
+        <Label x:Name="lbl_Titulo" Content="Filtrar Articulos Por:" Margin="29,14,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" Width="216"/>
+        <Label x:Name="lbl_Nombre" Content="Nombre:" HorizontalAlignment="Left" Margin="80,88,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="72" FontSize="16"/>
+        <TextBox x:Name="tbx_Nombre" DataContext="{Binding}" Text="{Binding Nombre, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="152,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" FontSize="16"/>
+        <DataGrid x:Name="dataGrid_Articulos" AutoGenerateColumns="False"
+                  IsReadOnly="False"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding ArticulosCertificado, Mode=Default}"
+                  HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Height="366" Width="830">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdCertificateArticles, Mode=Default}" FontSize="16" Header="ID" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Control.FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name, Mode=Default}" FontSize="16" Header="Nombre Articulo" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Control.FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Description, Mode=Default}" FontSize="16" Header="Descripción" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Control.FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <!--<DataGridTextColumn Binding="{Binding UnitCost, Mode=Default}" FontSize="16" Header="Costo Unitario" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Control.FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>-->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btn_VerPrecios" Content="Ver Precios" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Height="28" FontSize="16" Click="btn_VerPrecios_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding CertificateArticleItem.Name, Mode=Default}" FontSize="16" Header="Rubro" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Control.FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding MeasurementUnit.Simbol, Mode=Default}" FontSize="16" Header="Unidad de Medida" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Control.FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_BorrarArticulo" Visibility="Hidden" Content="Borrar Articulo" HorizontalAlignment="Left" Margin="10,450,0,0" VerticalAlignment="Top" Width="157" Height="38" FontSize="16" Background="#FFFF4444" BorderBrush="#FFFF4444"/>
+        <Button x:Name="btn_ActualizarArticulo" Content="Actualizar Articulo" HorizontalAlignment="Left" Margin="698,21,0,0" VerticalAlignment="Top" Width="142" Height="38" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_ActualizarArticulo_Click"/>
+        <Button x:Name="btn_ActualizarCostos" Content="Actualizar Costos" HorizontalAlignment="Left" Margin="351,56,0,0" VerticalAlignment="Top" Width="169" Height="27" FontSize="16" Background="#FFFFBB33" BorderBrush="#FFFFBB33" Click="btn_ActualizarCostos_Click"/>
+        <Button x:Name="btn_Filtrar" Content="Filtrar" HorizontalAlignment="Left" Margin="444,88,0,0" VerticalAlignment="Top" Width="76" Height="28" FontSize="16" Background="#FF33B5E5" BorderBrush="#FF33B5E5" Click="btn_Filtrar_Click" />
+    </Grid>
+
+</UserControl>

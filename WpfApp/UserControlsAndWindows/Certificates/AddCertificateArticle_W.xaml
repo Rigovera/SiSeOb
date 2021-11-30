@@ -1,0 +1,78 @@
+﻿<Window x:Class="WpfApp.UserControlsAndWindows.Certificates.AddCertificateArticle_W"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.UserControlsAndWindows.Certificates"
+        mc:Ignorable="d"
+        Title="Agregar Articulos al Certificado" 
+        Height="552.544" Width="891.339" MaxHeight="552.544" MaxWidth="891.339"
+        Background="#FF515151" WindowStyle="ToolWindow" Loaded="Window_Loaded"  >
+    <Grid>
+        <Label x:Name="lbl_RubroArticulo" Content="Filtrar por Rubro:" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" Foreground="White" Height="37" Width="142" FontSize="16" />
+        <ComboBox x:Name="cbx_RubroArticulo" 
+            ItemsSource="{Binding ListaRubrosArticulosCertificado}" 
+            DisplayMemberPath="Name" 
+            SelectedValuePath="IdCertificateArticleItem" 
+            SelectedItem="{Binding RubroSeleccionado}"
+            HorizontalAlignment="Left" Margin="137,10,0,0" VerticalAlignment="Top" Width="194" FontSize="16" SelectionChanged="cbx_RubroArticulo_SelectionChanged"/>
+        <DataGrid x:Name="dataGrid_Articulos" AutoGenerateColumns="False"
+            IsReadOnly="False"
+            SelectionMode="Single"
+            ItemsSource="{Binding ArticulosCertificado, Mode=Default}"
+            HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="419" Width="854" SelectionChanged="dataGrid_Articulos_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdCertificateArticles, Mode=Default}" FontSize="16" Header="ID" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name, Mode=Default}" FontSize="16" Header="Nombre Articulo" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Description, Mode=Default}" FontSize="16" Header="Descripción" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding CertificateArticleItem.Name, Mode=Default}" FontSize="16" Header="Rubro" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding MeasurementUnit.Simbol, Mode=Default}" FontSize="16" Header="Unidad de Medida" IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_AgregarArticulo" Content="Agregar Articulo" HorizontalAlignment="Left" Margin="694,476,0,0" VerticalAlignment="Top" Width="170" Height="32" Background="#FF00C851" BorderBrush="{x:Null}"  FontSize="16" Click="btn_AgregarArticulo_Click" />
+        <Label x:Name="lbl_Cantidad" Content="Cantidad:" HorizontalAlignment="Left" Margin="336,10,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="76" FontSize="16" />
+        <TextBox x:Name="tbx_Cantidad" DataContext="{Binding}" Text="{Binding Cantidad, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="417,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" FontSize="16" KeyUp="tbx_Cantidad_KeyUp"/>
+        <ComboBox x:Name="cbx_PreciosArticuloSeleccionado" 
+            ItemsSource="{Binding PreciosArticuloSeleccionado}" 
+            DisplayMemberPath="PriceList.Name" 
+            SelectedValuePath="IdArticlePrices" 
+            SelectedItem="{Binding PrecioSeleccionado}"
+            HorizontalAlignment="Left" Margin="694,11,0,0" VerticalAlignment="Top" Width="170" FontSize="16" SelectionChanged="cbx_PreciosArticuloSeleccionado_SelectionChanged"/>
+        <Label x:Name="lbl_RubroArticulo_Copy" Content="Precios Disponibles:" HorizontalAlignment="Left" Margin="544,10,0,0" VerticalAlignment="Top" Foreground="White" Height="28" Width="150" FontSize="16" />
+        <Label x:Name="lbl_ArticuloSeleccionado" Content="Articulo:" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="75" FontSize="18" />
+        <TextBox x:Name="tbx_ArticuloSeleccionado" DataContext="{Binding}" Text="{Binding ArticuloSeleccionado.Name, Mode=Default}" HorizontalAlignment="Left" Height="32" Margin="85,476,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" FontSize="20" IsEnabled="False"/>
+        <Label x:Name="lbl_PrecioSeleccionado" Content="Precio Total:" HorizontalAlignment="Left" Margin="417,476,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="115" FontSize="18" RenderTransformOrigin="5.787,1.188" />
+        <TextBox x:Name="tbx_PrecioSeleccionado" DataContext="{Binding}" Text="{Binding ArticuloSeleccionado.UnitCost, Mode=Default}" HorizontalAlignment="Left" Height="32" Margin="520,476,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" FontSize="20" IsEnabled="False"/>
+
+    </Grid>
+</Window>

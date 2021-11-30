@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b1e36f09d114ac5a7e9d5b4339d9514" Name="Diagram1">
+        <EntityTypeShape EntityType="siseobModel.assignedemployee" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="siseobModel.assignedtool" Width="1.5" PointX="5.25" PointY="12.25" />
+        <EntityTypeShape EntityType="siseobModel.certificate" Width="1.5" PointX="8.25" PointY="8" />
+        <EntityTypeShape EntityType="siseobModel.certificatearticleitem" Width="1.5" PointX="6" PointY="28" />
+        <EntityTypeShape EntityType="siseobModel.certificatedetail" Width="1.5" PointX="10.5" PointY="8.375" />
+        <EntityTypeShape EntityType="siseobModel.certificatetype" Width="1.5" PointX="6" PointY="1.625" />
+        <EntityTypeShape EntityType="siseobModel.client" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="siseobModel.employee" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="siseobModel.employeetype" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="siseobModel.location" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="siseobModel.measurementunit" Width="1.5" PointX="6" PointY="25.25" />
+        <EntityTypeShape EntityType="siseobModel.moneymovement" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="siseobModel.moneymovementtype" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="siseobModel.receipt" Width="1.5" PointX="5.25" PointY="21.5" />
+        <EntityTypeShape EntityType="siseobModel.receiptdetail" Width="1.5" PointX="7.5" PointY="21.5" />
+        <EntityTypeShape EntityType="siseobModel.tool" Width="1.5" PointX="3" PointY="16" />
+        <EntityTypeShape EntityType="siseobModel.tooltype" Width="1.5" PointX="0.75" PointY="16.625" />
+        <EntityTypeShape EntityType="siseobModel.work" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="siseobModel.worktype" Width="1.5" PointX="0.75" PointY="11.875" />
+        <AssociationConnector Association="siseobModel.fk_AssignedEmployee_Employee1" />
+        <AssociationConnector Association="siseobModel.fk_AssignedEmployee_Work1" />
+        <AssociationConnector Association="siseobModel.fk_AssignedTool_Tool1" />
+        <AssociationConnector Association="siseobModel.fk_AssignedTool_Work1" />
+        <AssociationConnector Association="siseobModel.fk_Certificate_CertificateType1" />
+        <AssociationConnector Association="siseobModel.fk_Certificate_Work1" />
+        <AssociationConnector Association="siseobModel.fk_CertificateDetail_Certificate1" />
+        <AssociationConnector Association="siseobModel.fk_Work_Client1" />
+        <AssociationConnector Association="siseobModel.fk_Employee_EmployeeType1" />
+        <AssociationConnector Association="siseobModel.fk_Work_Location1" />
+        <AssociationConnector Association="siseobModel.fk_MoneyMovements_MovementType1" />
+        <AssociationConnector Association="siseobModel.fk_MoneyMovements_Work1" />
+        <AssociationConnector Association="siseobModel.fk_Receipt_Work1" />
+        <AssociationConnector Association="siseobModel.fk_ReceiptDetail_Receipt1" />
+        <AssociationConnector Association="siseobModel.fk_Tool_ToolType1" />
+        <AssociationConnector Association="siseobModel.fk_Work_WorkType" />
+        <EntityTypeShape EntityType="siseobModel.articleprice" Width="1.5" PointX="10.5" PointY="26.5" />
+        <EntityTypeShape EntityType="siseobModel.pricelist" Width="1.5" PointX="9.875" PointY="29.375" />
+        <AssociationConnector Association="siseobModel.fk_articleprices_pricelist1" />
+        <EntityTypeShape EntityType="siseobModel.certificatearticle" Width="1.5" PointX="8.25" PointY="25.125" />
+        <AssociationConnector Association="siseobModel.fk_articleprices_certificatearticles1" />
+        <AssociationConnector Association="siseobModel.fk_CertificateArticles_CertificateArticleItem1" />
+        <AssociationConnector Association="siseobModel.fk_CertificateArticles_MeasurementUnit1" />
+        <AssociationConnector Association="siseobModel.fk_CertificateDetail_CertificateArticles1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

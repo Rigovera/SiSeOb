@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Si.Se.Ob" Height="720" Width="1080"  MaxHeight="720" MaxWidth="1080"
+        Background="#FF515151" 
+        Name="FormularioPrincipal">
+    <Grid>
+        <Image x:Name="image" Height="110" VerticalAlignment="Top" Stretch="UniformToFill" Source="pack://siteoforigin:,,,/Resources/depto3d.jpg"/>
+        <TreeView x:Name="treeView" FontSize="18" Foreground="White" Background="#FF211313" HorizontalAlignment="Left" Width="185" Margin="0,110,0,0" FontFamily="Mongolian Baiti" RenderTransformOrigin="0.5,0.5" BorderBrush="#FF171717">
+            <TreeViewItem Header="Administración Gral"  Foreground="White" Margin="10,40,0,0" >
+                <TreeViewItem Header="Empleados"  Foreground="White" Name="tvi_ADM_Empleados" Selected="tvi_ADM_Empleados_Selected"/>
+                <TreeViewItem Header="Herramientas"  Foreground="White" Name="tvi_ADM_Herramientas" Selected="tvi_ADM_Herramientas_Selected"/>
+                <TreeViewItem Header="Certificados"  Foreground="White" Name="tvi_ADM_Certificados">
+                    <TreeViewItem Header="Articulos"  Foreground="White" Name="tvi_ADM_ArticulosCertificado" Selected="tvi_ADM_Certificados_Selected"/>
+                    <TreeViewItem Header="Tipos"  Foreground="White" Name="tvi_ADM_TiposCertificado" Selected="tvi_ADM_TiposCertificado_Selected" />
+                </TreeViewItem>
+                <TreeViewItem Header="Contabilidad"  Foreground="White" Name="tvi_ADM_Contabilidad" Selected="tvi_ADM_Contabilidad_Selected"/>
+                <TreeViewItem Header="Obras"  Foreground="White" Name="tvi_ADM_Obras" Selected="tvi_ADM_Obras_Selected"/>
+                <TreeViewItem Header="Respaldo DB"  Foreground="White" Name="tvi_ADM_RestoreDB" Selected="tvi_ADM_RestoreDB_Selected"/>
+            </TreeViewItem>
+            <!--<TreeViewItem Header="Certificados"  Foreground="White" Margin="10,0,0,0">
+                <TreeViewItem Header="Certificados"  Foreground="White" Name="tvi_Certificados"/>
+            </TreeViewItem>-->
+            <!--<TreeViewItem Header="Contabilidad"  Foreground="White" Margin="10,0,0,0">
+                <TreeViewItem Header="Comprobantes"  Foreground="White" Name="tvi_Comprobantes"/>
+                <TreeViewItem Header="Movimientos"  Foreground="White" Name="tvi_Movimientos"/>
+            </TreeViewItem>-->
+            <TreeViewItem Header="Obras"  Foreground="White" Margin="10,0,0,0">
+                <TreeViewItem Header="Obras"  Foreground="White" Name="tvi_Obras" Selected="tvi_Obras_Selected"/>
+            </TreeViewItem>
+        </TreeView>
+        <Label x:Name="label" Content="Sistema de Seguimiento de Obras" VerticalAlignment="Top" FontSize="36" Height="Auto" HorizontalAlignment="Right" Width="Auto" TextOptions.TextHintingMode="Animated" TextOptions.TextFormattingMode="Display" FontWeight="ExtraBold" FontStretch="ExtraExpanded" Margin="0,50,43,0" BorderThickness="0" ClipToBounds="True" SnapsToDevicePixels="True" FontFamily="Yu Gothic UI Semibold" Background="{x:Null}">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB62323" Offset="0.751"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label x:Name="label1" Content="Modulos" Foreground="White" HorizontalAlignment="Left" Margin="0,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.105,-0.923" Width="160" FontFamily="Microsoft JhengHei" FontSize="20"/>
+        <Rectangle Fill="#FFE2E2E2" HorizontalAlignment="Left" Margin="185,110,0,0" Width="5" Stroke="#FFE2E2E2"/>
+        <StackPanel HorizontalAlignment="Left" Height="Auto" Margin="190,110,0,0" VerticalAlignment="Top" Width="Auto" Name="sp_CRUD"/>
+    </Grid>
+</Window>

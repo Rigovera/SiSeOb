@@ -1107,7 +1107,7 @@ namespace DataTier
         {
             try
             {
-                string constring = "server=localhost;user=root;pwd=testeo123;database=siseob;";
+                string constring = "server=localhost;user=root;pwd=root;database=siseob;";
 
                 // Important Additional Connection Options
                 constring += "charset=utf8;convertzerodatetime=true;";

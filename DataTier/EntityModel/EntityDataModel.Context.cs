@@ -17,6 +17,7 @@ namespace DataTier.EntityModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
+    //"docker run --name mariaDB -e MYSQL_ROOT_PASSWORD=root -p 3306:3306  -d docker.io/library/mariadb:10.9"
     [DbConfigurationType(typeof(MySqlEFConfiguration))] //linea super importante luego de actualizar EF 6 y connector. Tambien hay que modificar correctamente el config
     public partial class siseobEntities : DbContext
     {
